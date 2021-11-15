@@ -7,7 +7,7 @@ import { Customer } from '../../shared/models/customer';
   providedIn: 'root'
 })
 export class CustomerService {
-  private readonly URL = "http://private-92a969-processoseletivo1.apiary-mock.com/customers"
+  private readonly URL = "https://private-92a969-processoseletivo1.apiary-mock.com/customers"
   constructor(private http: HttpClient) { }
 
   getCustomers(): Observable<Customer[]> {
