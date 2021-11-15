@@ -1,0 +1,31 @@
+@mixin  flexCenterWithItems ($justifyContet, $flexDirection){
+    display: flex;
+    align-items: center;
+    justify-content: $justifyContet;
+    flex-direction: $flexDirection;
+}
+@mixin  flexItems($flexDirection){
+    display: flex;
+    flex-direction: $flexDirection;
+}
+mat-card-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 27vh;
+}
+mat-card {
+    @include flexCenterWithItems(space-around, center);
+    width: 35rem;
+    height: 20rem;    
+    
+    form {
+        width: 100%;
+        margin: 2rem;
+        @include flexItems(column);
+        
+        mat-card-actions{
+            @include flexCenterWithItems(flex-end,row)
+        }
+    }
+}

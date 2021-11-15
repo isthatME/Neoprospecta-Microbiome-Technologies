@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+}
+html, body { height: 100%; }
+body { margin: 0; padding:0; font-family: 'Lato', sans-serif; }
+
+.error.mat-snack-bar-container {
+    background-color: rgb(253, 236, 234);
+    color: rgb(97, 26, 21);
+    padding: 0 !important;
+}
+
+.success.mat-snack-bar-container {
+    background-color: rgb(237, 247, 237);
+    color: rgb(30, 70, 32);
+    padding: 0 !important;
+}

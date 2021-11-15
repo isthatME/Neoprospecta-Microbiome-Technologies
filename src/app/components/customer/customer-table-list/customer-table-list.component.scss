@@ -1,0 +1,92 @@
+@mixin  flexCenterWithItems ($justifyContet, $flexDirection){
+    display: flex;
+    align-items: center;
+    justify-content: $justifyContet;
+    flex-direction: $flexDirection;
+}
+@mixin  flexCenter ($justifyContet, $flexDirection){
+    display: flex;
+    justify-content: $justifyContet;
+    flex-direction: $flexDirection;
+}
+// table 
+
+.table-list{
+    @include flexCenter(space-between,  column); 
+    margin: 0 2rem;
+}
+.filter-input {
+    @include flexCenter(flex-end, row);
+
+    mat-form-field {
+        width: 15rem;
+        margin-top: 0.3rem;
+    }
+}
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+th {
+    width: 20%;
+    max-width: 20%;
+}
+tr {
+    transition: 2s ease-in-out;
+}
+th.mat-sort-header-sorted {
+    color: black;
+}
+td mat-icon {
+    cursor: pointer;
+    color: rgb(119, 117, 117)
+}
+.spinner {
+    width: 100%;
+    position: absolute;
+    margin-top: 25vh;
+    @include flexCenter(center,  row);    
+}
+
+// card 
+.cards-list {
+    display: none;
+    width: 100vw;
+    flex-wrap: wrap;   
+    .card-list-content > span:first-of-type {
+        font-size: 1.1rem;
+        font-weight: bolder;
+    }
+    .card-list-content {
+        @include flexCenterWithItems(space-between,  column);    
+        width: 12rem;
+        height: 8rem;   
+        margin: 0.5rem;
+        transition: transform 300ms ease;
+    }
+    .card-list-content:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-list {
+        display: none;
+    }
+    .cards-list {
+        @include flexCenterWithItems(center, column);    
+
+        .filter-input {
+            align-self: flex-end;
+            margin: 0 3.5rem;
+        }
+
+        .cards-list-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    }
+}

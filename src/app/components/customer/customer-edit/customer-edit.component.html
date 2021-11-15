@@ -1,0 +1,33 @@
+<mat-card-content>
+    <mat-card *ngIf="!isCustomerLoading">
+        <ngx-avatar initialsSize="2" class="my-avatar" name="{{ customer?.name }}" size="130">
+        </ngx-avatar>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="name">
+                <mat-error *ngIf="form.get('name')?.errors?.required">Esse campo é obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Idade</mat-label>
+                <input matInput formControlName="age">
+                <mat-error *ngIf="form.get('age')?.errors?.required">Esse campo é obrigatório</mat-error>
+                <mat-error *ngIf="form.get('age')?.errors">Digite uma idade válida</mat-error> 
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Cidade</mat-label>
+                <input matInput formControlName="city">
+                <mat-error *ngIf="form.get('city')?.errors?.required">Esse campo é obrigatório</mat-error>
+            </mat-form-field>
+            <mat-card-actions>
+                <button mat-raised-button (click)="cancelUpdateCustomerAction()">Cancelar</button>
+                <button [disabled]="form.get('age')?.errors != null" mat-raised-button
+                    (click)="updateCustomer(form)" color="primary">Salvar</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+    <mat-card *ngIf="isCustomerLoading">
+        <mat-spinner [diameter]="80"></mat-spinner>
+    </mat-card>
+
+</mat-card-content>
