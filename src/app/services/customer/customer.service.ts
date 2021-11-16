@@ -1,19 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Customer } from '../../shared/models/customer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  private readonly URL = "https://private-92a969-processoseletivo1.apiary-mock.com/customers"
+
   constructor(private http: HttpClient) { }
 
   getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.URL)
+    return this.http.get<Customer[]>(environment.base)
   }
    updateCustomer(customer: Customer): Observable<Customer> {
-     return this.http.put<Customer>(`${this.URL}/${customer.id}`, customer)
+     return this.http.put<Customer>(`${environment.base}/${customer.id}`, customer)
    }
 }

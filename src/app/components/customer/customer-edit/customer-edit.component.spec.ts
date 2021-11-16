@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { CustomerEditComponent } from './customer-edit.component';
+import { Customer } from 'src/app/shared/models/customer';
 
 describe('CustomerEditComponent', () => {
   let component: CustomerEditComponent;
@@ -27,5 +28,16 @@ describe('CustomerEditComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+ 
+  it('should retrieve the desired customer', () => {
+    const dummyCustomers: Customer[] = [
+      { id: 1, name: "Guilherme", city: "Fortaleza", age: 24 },
+      { id: 2, name: "Luiz", city: "Santa Catarina", age: 28 }
+    ]
+
+    let desiredCustomer = fixture.componentInstance.filterDesiredCustomer(dummyCustomers, 2)
+    
+    expect(desiredCustomer).toBe(dummyCustomers[1])
   });
 });
