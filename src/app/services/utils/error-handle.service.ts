@@ -10,9 +10,9 @@ export class ErrorHandleService {
   handleError(err: any) {
     let errorMessage: string;
     if (err.error instanceof ErrorEvent) {
-      errorMessage = `An error occurred: ${err.error.message}`;
+      errorMessage = `Ocorreu um erro: ${err.error.message}`;
     } else {
-      errorMessage = `Backend returned code ${err.status}: ${err.body?.error}`;
+      errorMessage = `Resposta do servidor:  ${err.status}: ${err.body?.error}`;
     }
     return errorMessage;
   }
