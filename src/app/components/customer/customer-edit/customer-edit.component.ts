@@ -48,14 +48,14 @@ export class CustomerEditComponent implements OnInit {
     this.form.patchValue(customer as Customer)
   }
   // filter current customer provided by `getCustomer` function, based on id retrived from url params
-  filterDesiredCustomer(customers: Customer[]): Customer | undefined {
-    return customers.find((customer: Customer) => customer.id == this.customerId)
+  filterDesiredCustomer(customers: Customer[], customerId: number): Customer | undefined {
+    return customers.find((customer: Customer) => customer.id == customerId)
   }
   getCustomer(): void {
     this.customeService.getCustomers()
       .pipe(take(1))
       .subscribe((customers: Customer[]) => {
-        this.customer = this.filterDesiredCustomer(customers);
+        this.customer = this.filterDesiredCustomer(customers, this.customerId);
         this.patchForm(this.customer as Customer);
         this.isCustomerLoading = false
       }, (error: any) => {
